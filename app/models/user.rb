@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+    #on create user, users password is hashed by bcrpt and saved to database (password_digest)
     has_secure_password
+
     has_many :items
 
     validates :first_name, presence: true

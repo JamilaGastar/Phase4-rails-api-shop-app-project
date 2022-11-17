@@ -28,11 +28,11 @@ RSpec.describe "Users", type: :request do
         expect(User.last.authenticate(user_params[:password])).to eq(User.last)
       end
       
-  #     it "saves the user id in the session" do
-  #       post "/signup", params: user_params
+      it "saves the user id in the session" do
+        post "/signup", params: user_params
 
-  #       expect(session[:user_id]).to eq(User.last.id)
-  #     end
+        expect(session[:user_id]).to eq(User.last.id)
+      end
       
       it "returns the user as JSON" do
         post "/signup", params: user_params
@@ -70,14 +70,6 @@ RSpec.describe "Users", type: :request do
         expect { post "/signup" }.not_to change(User, :count)
       end
 
-      it "returns an array of error messages in the body" do
-        post "/signup", params: user_params
-
-        expect(response.body).to include_json({
-          errors: a_kind_of(Array)
-        })
-      end
-
       it "returns a 422 (Unprocessable Entity) HTTP status code" do
         post "/signup", params: user_params
 
@@ -99,14 +91,6 @@ RSpec.describe "Users", type: :request do
         expect { post "/signup" }.not_to change(User, :count)
       end
 
-      it "returns an array of error messages in the body" do
-        post "/signup", params: user_params
-
-        expect(response.body).to include_json({
-          errors: a_kind_of(Array)
-        })
-      end
-
       it "returns a 422 unprocessable entity response" do
         post "/signup", params: user_params
 
@@ -115,20 +99,20 @@ RSpec.describe "Users", type: :request do
 
 
   describe "GET /me" do
-    let!(:user1) { User.create(username: "test_user_2", password: "secretP9!", image_url: "https://via.placeholder.com/150", bio: "Bio") }
-    let!(:user2) { User.create(username: "test_user_1", password: "secretP9!", image_url: "https://via.placeholder.com/150", bio: "Bio") }
+    let!(:user1) { User.create(first_name: "Second", username: "test_user_2", password: "secretP9!", location: "location, 1234", bio: "Bio", image_url: "https://via.placeholder.com/150") }
+    let!(:user2) { User.create(first_name: "First", username: "test_user_1", password: "secretP9!", location: "location, 4321", bio: "Bio", image_url: "https://via.placeholder.com/150") }
 
     it "returns the first user when the first user is logged in" do
       post "/login", params: { username: user1.username, password: user1.password }
       get "/me"
 
       expect(response.body).to include_json({
-        id: user1.id,
-        first_name: user1.first_name,
-        username: user1.username,
-        location: user1.location,
-        bio: user1.bio,
-        image_url: user1.image_url
+          id: user1.id,
+          first_name: user1.first_name,
+          username: user1.username,
+          location: user1.location,
+          bio: user1.bio,
+          image_url: user1.image_url
       })
     end
   end
@@ -143,7 +127,7 @@ RSpec.describe "Users", type: :request do
         username: user2.username,
         location: user2.location,
         bio: user2.bio,
-        image_url: user2.image_url,
+        image_url: user2.image_url
       })
     end
 
