@@ -13,6 +13,8 @@ gem 'puma', '~> 5.0'
 gem 'bcrypt', '~> 3.1.7'
 # Use Active Model Serializers
 gem 'active_model_serializers'
+# Use Fake Data
+gem 'faker'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'

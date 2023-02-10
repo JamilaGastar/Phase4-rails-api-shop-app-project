@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :items
   resources :users
   post '/signup', to: "users#create"
   #route to retrive users data from database using the session hash
