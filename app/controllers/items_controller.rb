@@ -10,8 +10,9 @@ class ItemsController < ApplicationController
 
     # POST /items
     def create
-        item = Item.create(item_params)
-        render json: item
+        byebug
+        # item = Item.create(item_params)
+        # render json: item
     end
 
     # GET /items/:id
@@ -43,7 +44,7 @@ class ItemsController < ApplicationController
     end
     
     def item_params
-        params.permit(:name, :image_url, :description, :condition, :size, :price, :stock)
+        params.permit(:name, :image_url, :description, :condition, :price, :stock, :size)
     end
 
     def render_not_found_response
