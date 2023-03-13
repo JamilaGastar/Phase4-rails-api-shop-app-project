@@ -9,7 +9,6 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.decimal :price
       t.integer :stock
       t.belongs_to :user
-
       t.timestamps
     end
   end
