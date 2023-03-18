@@ -44,4 +44,13 @@ image_url: ""
 }
 ])
 
-
+rand(2..4).times do
+    user.items.create(
+      name: name.sample,
+      description: descriptions.sample,
+      condition: conditions.sample,
+      size: rand(6..12),
+      price: rand(1..500),
+      stock: 1
+    )
+  end
