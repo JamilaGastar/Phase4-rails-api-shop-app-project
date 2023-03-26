@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2023_03_12_232100) do
     t.integer "stock"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.integer "size"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
