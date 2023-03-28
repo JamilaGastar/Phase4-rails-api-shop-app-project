@@ -7,6 +7,7 @@ import { Button } from "../styles";
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
 
+  
   return (
     <div className="container">
       <h1>Trifter</h1>
@@ -35,6 +36,7 @@ function Login({ onLogin }) {
       )}
     </div>
   );
+      
 }
 
 
